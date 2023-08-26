@@ -9,19 +9,18 @@ pipeline {
                         docker {
                             label 'docker'
                             image 'python:3.9'
-                            customWorkspace '/agent/workspace/python_39'
                             alwaysPull true
-                            args "-u root:root --entrypoint=''"
-                            // reuseNode true //JENKINS-53711
                         }
                     }
                     steps {
                         script {
                             sh """
                             python --version
+                            export VERSION=3.9
                             pwd
                             hostname
                             git clone https://github.com/shenxianpeng/JENKINS-30600.git
+                            echo VERSION=\$VERSION
                             """
                         }
                     }
@@ -31,19 +30,18 @@ pipeline {
                         docker {
                             label 'docker'
                             image 'python:3.10'
-                            customWorkspace '/agent/workspace/python_310'
                             alwaysPull true
-                            args "-u root:root --entrypoint=''"
-                            // reuseNode true //JENKINS-53711
                         }
                     }
                     steps {
                         script {
                             sh """
                             python --version
+                            export VERSION=3.10
                             pwd
                             hostname
                             git clone https://github.com/shenxianpeng/JENKINS-30600.git
+                            echo VERSION=\$VERSION
                             """
                         }
                     }
